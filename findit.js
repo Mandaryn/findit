@@ -8,4 +8,17 @@ if (Meteor.isClient) {
       { name: "Third place", image: 'place_1.jpeg' }
     ]
   });
-}
+
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.watchPosition(showPosition);
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
+  };
+  function showPosition(position) {
+    $('.latitude').html(position.coords.latitude);
+    $('.longitude').html(position.coords.longitude);
+  };
+  getLocation();
+};

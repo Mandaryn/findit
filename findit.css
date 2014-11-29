@@ -39,6 +39,11 @@ h1 {
   margin-right: 1em;
 }
 
+h1 span.coordinates {
+  font-size: 0.6em;
+  font-weight: normal;
+}
+
 ul {
   margin: 0;
   padding: 0;

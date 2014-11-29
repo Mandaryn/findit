@@ -1,23 +1,11 @@
+// simple-todos.js
 if (Meteor.isClient) {
-  // counter starts at 0
-  Session.setDefault("counter", 0);
-
-  Template.hello.helpers({
-    counter: function () {
-      return Session.get("counter");
-    }
-  });
-
-  Template.hello.events({
-    'click button': function () {
-      // increment the counter when button is clicked
-      Session.set("counter", Session.get("counter") + 1);
-    }
-  });
-}
-
-if (Meteor.isServer) {
-  Meteor.startup(function () {
-    // code to run on server at startup
+  // This code only runs on the client
+  Template.body.helpers({
+    places: [
+      { name: "First place", image: 'place_1.jpeg' },
+      { name: "Second place", image: 'place_1.jpeg' },
+      { name: "Third place", image: 'place_1.jpeg' }
+    ]
   });
 }

@@ -6,10 +6,7 @@ body
     header
       h1 Places
         span.coordinates
-          | Latitude:
-          span.latitude ???
-          | Longitude:
-          span.longitude ???
+          +coordinates
 
     ul
       each places
@@ -19,3 +16,6 @@ template(name="place")
   li
     img(src=image)
     p #{name}
+
+template(name="coordinates")
+  | Latitude: #{currentCoordinates.lat}, Longitude: #{currentCoordinates.lng}

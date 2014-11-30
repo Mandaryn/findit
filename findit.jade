@@ -1,0 +1,21 @@
+head
+  title findit
+
+body
+  .container
+    header
+      h1 Places
+        span.coordinates
+          | Latitude:
+          span.latitude ???
+          | Longitude:
+          span.longitude ???
+
+    ul
+      each places
+        +place
+
+template(name="place")
+  li
+    img(src=image)
+    p #{name}

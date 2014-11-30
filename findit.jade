@@ -16,6 +16,9 @@ template(name="place")
   li
     img(src=image)
     p #{name}
+    p Latitude: #{latitude}
+    p Longitude: #{longitude}
+    p Distance: #{distance}m
 
 template(name="coordinates")
   | Latitude: #{currentCoordinates.lat}, Longitude: #{currentCoordinates.lng}

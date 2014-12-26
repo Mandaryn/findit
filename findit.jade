@@ -3,18 +3,26 @@ head
 
 body
 
-template(name="findit")
-  .container
+template(name="mainLayout")
+  #container
     header
-      h1
-        a(href="/") FindIt
-        a(href="/faq") Faq
-        span.coordinates
-          +coordinates
+      +yield("header")
+    main
+      +yield
+    footer
+      p Meteor discovery project by Mandaryn
 
-    .places
-      each places
-        +place
+template(name="findit")
+  +contentFor("header")
+    h1
+      | FindIt
+      a(href="/faq") Faq
+      span.coordinates
+        +coordinates
+
+  .places
+    each places
+      +place
 
 template(name="place")
   .place(class=distanceClass, style="order: #{distance};")
@@ -28,9 +36,10 @@ template(name="coordinates")
   | Latitude: #{currentCoordinates.lat}, Longitude: #{currentCoordinates.lng}
 
 template(name="faq")
-  .container
-    header
-      h1
-        a(href="/") FindIt
-    p This is a simple geo game where you need to get close to the place in photo to claim it.
-    p Claim as much of the places as possible to win.
+  +contentFor("header")
+    h1
+      a(href="/") FindIt
+      | Faq
+
+  p This is a simple geo game where you need to get close to the place in photo to claim it.
+  p Claim as much of the places as possible to win.

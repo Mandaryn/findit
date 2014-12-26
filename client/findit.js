@@ -37,6 +37,11 @@ Template.coordinates.helpers({
   currentCoordinates: Geolocation.latLng
 });
 
+Router.configure({
+  loadingTemplate: 'loading',
+  layoutTemplate: 'mainLayout'
+});
+
 Router.route('/', function () {
   this.render('findit');
 });

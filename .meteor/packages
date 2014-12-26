@@ -11,4 +11,5 @@ less
 mquandalle:jade
 mdg:geolocation
 iron:router
+iron:layout
 

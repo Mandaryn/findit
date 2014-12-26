@@ -2,9 +2,13 @@ head
   title FindIt
 
 body
+
+template(name="findit")
   .container
     header
-      h1 FindIt
+      h1
+        a(href="/") FindIt
+        a(href="/faq") Faq
         span.coordinates
           +coordinates
 
@@ -22,3 +26,11 @@ template(name="place")
 
 template(name="coordinates")
   | Latitude: #{currentCoordinates.lat}, Longitude: #{currentCoordinates.lng}
+
+template(name="faq")
+  .container
+    header
+      h1
+        a(href="/") FindIt
+    p This is a simple geo game where you need to get close to the place in photo to claim it.
+    p Claim as much of the places as possible to win.

@@ -6,8 +6,8 @@ places.insert({ name: "Close place", image: 'place_1.jpeg', latitude: 51.777401,
 places.insert({ name: "Right here", image: 'place_1.jpeg', latitude: 51.7779007, longitude: 19.411222199999997 });
 
 // access places collection in view
-Template.body.helpers({
-  places: places.find({}).fetch()
+UI.registerHelper("places", function () {
+  return places.find({}).fetch();
 });
 
 Template.place.helpers({
@@ -35,4 +35,12 @@ Template.place.helpers({
 // display live current location
 Template.coordinates.helpers({
   currentCoordinates: Geolocation.latLng
+});
+
+Router.route('/', function () {
+  this.render('findit');
+});
+
+Router.route('/faq', function () {
+  this.render('faq');
 });

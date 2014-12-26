@@ -10,4 +10,5 @@ jquery
 less
 mquandalle:jade
 mdg:geolocation
+iron:router
 

@@ -9,6 +9,9 @@ places.insert({ name: "Right here", image: 'place_1.jpeg', latitude: 51.7779007,
 UI.registerHelper("places", function () {
   return places.find({}).fetch();
 });
+UI.registerHelper("roundGeo", function (number) {
+  return Number(Math.round(number+'e4')+'e-4');
+});
 
 Template.place.helpers({
   distance: function() {

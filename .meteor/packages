@@ -13,3 +13,5 @@ mdg:geolocation
 iron:router
 iron:layout
 
+sanjo:jasmine
+velocity:html-reporter

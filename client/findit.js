@@ -6,10 +6,10 @@ places.insert({ name: "Close place", image: 'place_1.jpeg', latitude: 51.777401,
 places.insert({ name: "Right here", image: 'place_1.jpeg', latitude: 51.7779007, longitude: 19.411222199999997 });
 
 // access places collection in view
-UI.registerHelper("places", function () {
+Template.registerHelper("places", function () {
   return places.find({}).fetch();
 });
-UI.registerHelper("roundGeo", function (number) {
+Template.registerHelper("roundGeo", function (number) {
   return Number(Math.round(number+'e4')+'e-4');
 });
 

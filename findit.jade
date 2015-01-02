@@ -7,23 +7,26 @@ template(name="mainLayout")
   #container
     header
       +header
-    main
+    main.container
       +yield
     footer
-      p Meteor discovery project by Mandaryn
+      .container
+        p Meteor discovery project by Mandaryn
 
 template(name="findit")
-  .places
+  .row  
     each places
       +place
 
 template(name="place")
-  .place(class=distanceClass, style="order: #{distance};")
-    img(src=image)
-    p #{name}
-    p Latitude: {{roundGeo latitude}}
-    p Longitude: {{roundGeo longitude}}
-    p Distance: #{distance}m
+  .col-xs-6.col-sm-4.col-md-3(class=distanceClass)
+    .thumbnail
+      img(src=image)
+      .caption
+        h3 #{name}
+        p Latitude: {{roundGeo latitude}}
+        p Longitude: {{roundGeo longitude}}
+        p Distance: #{distance}m
 
 template(name="coordinates")
   | Latitude: {{roundGeo currentCoordinates.lat}}, Longitude: {{roundGeo currentCoordinates.lng}}

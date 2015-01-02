@@ -24,7 +24,7 @@ Template.place.helpers({
     var distance = geolib.getDistance(Geolocation.currentLocation().coords, this);
     switch (true) {
       case (distance < 100):
-        return "close";
+        return "near";
       case (distance < 500):
         return "medium";
       case (distance < 1000):

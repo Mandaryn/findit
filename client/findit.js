@@ -1,3 +1,5 @@
+Meteor.subscribe("places");
+
 // access places collection in view
 Template.registerHelper("places", function () {
   return Places.find({}).fetch();

@@ -19,14 +19,9 @@ template(name="findit")
       +place
 
 template(name="place")
-  .col-xs-6.col-sm-4.col-md-3(class=distanceClass)
-    .thumbnail
+  .col-xs-4.col-sm-4.col-md-3.col-lg-2
+    .thumbnail(style=distanceColorStyle)
       img(src=image)
-      .caption
-        h3 #{name}
-        p Latitude: {{roundGeo latitude}}
-        p Longitude: {{roundGeo longitude}}
-        p Distance: #{distance}m
 
 template(name="coordinates")
   | Latitude: {{roundGeo currentCoordinates.lat}}, Longitude: {{roundGeo currentCoordinates.lng}}

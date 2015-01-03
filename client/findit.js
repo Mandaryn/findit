@@ -12,6 +12,15 @@ Template.registerHelper("places", function () {
 Template.registerHelper("roundGeo", function (number) {
   return Number(Math.round(number+'e4')+'e-4');
 });
+Template.registerHelper("roundGeo", function (number) {
+  return Number(Math.round(number+'e4')+'e-4');
+});
+
+function getColorFromDistance(value){
+    //value from 0 to 1
+    var hue=((1-value)*120).toString(10);
+    return ["hsl(",hue,",100%,50%)"].join("");
+}
 
 Template.place.helpers({
   distance: function() {
@@ -20,18 +29,14 @@ Template.place.helpers({
     }
     return geolib.getDistance(Geolocation.currentLocation().coords, this);
   },
-  distanceClass: function() {
+  distanceColorStyle: function() {
     var distance = geolib.getDistance(Geolocation.currentLocation().coords, this);
-    switch (true) {
-      case (distance < 100):
-        return "near";
-      case (distance < 500):
-        return "medium";
-      case (distance < 1000):
-        return "far";
-      default:
-        return "out_of_range";
-    };
+    var getColorFromPercent = function(value){
+        //value from 0 to 1
+        var hue=((1-value)*120).toString(10);
+        return ["background-color: hsl(",hue,",100%,50%)"].join("");
+    }
+    return getColorFromPercent(distance/1000);
   }
 });
 

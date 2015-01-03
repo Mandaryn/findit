@@ -1,8 +1,8 @@
-Meteor.subscribe("places");
+Meteor.subscribe("nearbyPlaces");
 
 // access places collection in view
 Template.registerHelper("places", function () {
-  return Places.find({}).fetch();
+  return PlacesNearby.find({}).fetch();
 });
 Template.registerHelper("roundGeo", function (number) {
   return Number(Math.round(number+'e4')+'e-4');

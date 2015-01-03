@@ -1,3 +1,4 @@
-Meteor.publish("places", function () {
-  return Places.find();
+Meteor.publish("nearbyPlaces", function () {
+  Mongo.Collection._publishCursor( Places.find(), this, 'placesNearby');
+  this.ready();
 });

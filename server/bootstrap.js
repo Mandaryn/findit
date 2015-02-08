@@ -1,6 +1,7 @@
 if (Places.find({}).count() === 0) {
   Places.insert({
     name: "Farthest place",
+    description: "Lorem ipsum dolor",
     image: 'place_1.jpeg',
     location: {
       type: "Point",
@@ -9,6 +10,7 @@ if (Places.find({}).count() === 0) {
   });
   Places.insert({
     name: "Farther place",
+    description: "Lorem ipsum dolor",
     image: 'place_1.jpeg',
     location: {
       type: "Point",
@@ -17,6 +19,7 @@ if (Places.find({}).count() === 0) {
   });
   Places.insert({
     name: "Close place",
+    description: "Lorem ipsum dolor",
     image: 'place_1.jpeg',
     location: {
       type: "Point",
@@ -25,6 +28,7 @@ if (Places.find({}).count() === 0) {
   });
   Places.insert({
     name: "Right here",
+    description: "Lorem ipsum dolor",
     image: 'place_1.jpeg',
     location: {
       type: "Point",

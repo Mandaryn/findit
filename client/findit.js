@@ -8,11 +8,17 @@ Deps.autorun(function() {
 Template.registerHelper("places", function () {
   return PlacesNearby.find({}).fetch();
 });
+Template.registerHelper("checkinPlace", function () {
+  return Session.get("checkinPlace");
+});
 Template.registerHelper("roundGeo", function (number) {
   return Number(Math.round(number+'e4')+'e-4');
 });
 
 Template.place.helpers({
+  isClose: function() {
+    return (this.distance < 50);
+  },
   distanceColorStyle: function() {
     var getColorFromPercent = function(value){
         //value from 0 to 1
@@ -20,7 +26,13 @@ Template.place.helpers({
         return ["background-color: hsl(",hue,",100%,50%)"].join("");
     }
     return getColorFromPercent(this.distance/1000);
-  },
+  }
+});
+
+Template.place.events({
+  "click .place button": function (event, template) {
+    Session.set("checkinPlace", template.data);
+  }
 });
 
 // display live current location

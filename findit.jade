@@ -13,15 +13,29 @@ template(name="mainLayout")
       .container
         p Meteor discovery project by Mandaryn
 
+template(name="placeDetails")
+  h1
+    | Cogratulations! You found "{{ name }}"
+  p
+    | hello {{ description }}
+
+
 template(name="findit")
+  if checkinPlace
+    +placeDetails checkinPlace
   .row  
     each places
       +place
 
 template(name="place")
   .col-xs-4.col-sm-4.col-md-3.col-lg-2
-    .thumbnail(style=distanceColorStyle)
+    .place.thumbnail(style=distanceColorStyle)
       img(src=image)
+      if isClose
+        .action
+          button.btn.btn-success(type="button")
+            span.glyphicon.glyphicon-ok
+            | Check in!
 
 template(name="coordinates")
   | Latitude: {{roundGeo currentCoordinates.lat}}, Longitude: {{roundGeo currentCoordinates.lng}}

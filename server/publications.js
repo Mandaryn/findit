@@ -18,7 +18,9 @@ Meteor.publish("nearbyPlaces", function (currentCoordinates) {
 
   var nearbyPlaces = Places.aggregate(pipeline);
   _(nearbyPlaces).each(function(place) {
-    self.added('placesNearby', Random.id(), {image: place.image, distance: place.distance});
+    self.added('placesNearby', Random.id(), {
+      name: place.name, description: place.description, image: place.image, distance: place.distance
+    });
   });
   self.ready();
 });

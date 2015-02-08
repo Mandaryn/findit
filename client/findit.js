@@ -1,4 +1,8 @@
-Meteor.subscribe("nearbyPlaces");
+Deps.autorun(function() {
+  if (!Geolocation.latLng()) return;
+  console.log("Your location is " + Geolocation.latLng());
+  Meteor.subscribe("nearbyPlaces", Geolocation.latLng());
+});
 
 // access places collection in view
 Template.registerHelper("places", function () {

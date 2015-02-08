@@ -1,4 +1,5 @@
-Meteor.publish("nearbyPlaces", function () {
+Meteor.publish("nearbyPlaces", function (currentCoordinates) {
+  console.log("Query for places near lat: " + currentCoordinates.lat + ", lng: " + currentCoordinates.lng);
   Places._ensureIndex({location: "2dsphere"});
   self = this;
   var db = MongoInternals.defaultRemoteCollectionDriver().mongo.db;
@@ -7,8 +8,9 @@ Meteor.publish("nearbyPlaces", function () {
     $geoNear: {
       near: {
         type: "Point",
-        coordinates: [51.772028,19.414764]
+        coordinates: [currentCoordinates.lat, currentCoordinates.lng]
       },
+      maxDistance: 1000,
       distanceField: "distance",
       spherical: true
     }
@@ -16,7 +18,6 @@ Meteor.publish("nearbyPlaces", function () {
 
   var nearbyPlaces = Places.aggregate(pipeline);
   _(nearbyPlaces).each(function(place) {
-    console.log(place.image);
     self.added('placesNearby', Random.id(), {image: place.image, distance: place.distance});
   });
   self.ready();
